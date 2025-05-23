@@ -1,5 +1,9 @@
 from flask import Flask
 from app.extensions import db,migrate
+from app.controllers.categories_controller import category
+from app.controllers.customer_controller import customer
+from app.controllers.products_controller import product
+
 
 
 #application factory function
@@ -16,6 +20,11 @@ def create_app():
     from app.models.category_model import Category
     from app.models.product_model import Product
     from app.models.customer_model import Customer
+
+    #registering blueprints
+    app.register_blueprint(category)
+    app.register_blueprint(customer)
+    app.register_blueprint(product)
 
 
     @app.route("/")
