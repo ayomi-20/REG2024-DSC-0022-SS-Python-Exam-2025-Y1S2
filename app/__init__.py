@@ -12,6 +12,11 @@ def create_app():
     db.init_app(app)
     migrate.init_app(app,db)
 
+    #importing and registering models
+    from app.models.category_model import Category
+    from app.models.product_model import Product
+    from app.models.customer_model import Customer
+
 
     @app.route("/")
     def exam_page():
